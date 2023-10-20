@@ -6,7 +6,7 @@ RED="\033[31m"      # Error message
 GREEN="\033[32m"    # Success message
 YELLOW="\033[33m"   # Warning message
 BLUE="\033[36m"     # Info message
-PLAIN='\033[1m'
+PLAIN='\033[0m'
 
 OS=`hostnamectl | grep -i system | cut -d: -f2`
 
@@ -215,7 +215,6 @@ getData() {
             CERT_FILE="/etc/trojan-go/${DOMAIN}.pem"
             KEY_FILE="/etc/trojan-go/${DOMAIN}.key"
         else
-            # resolve=`curl -sL https://lefu.men/hostip.php?d=${DOMAIN}`
             resolve=`ping ${DOMAIN} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'` 
             res=`echo -n ${resolve} | grep ${IP}`
             if [[ -z "${res}" ]]; then
@@ -306,7 +305,6 @@ getData() {
             index=`shuf -i0-${len} -n1`
             PROXY_URL=${SITES[$index]}
             host=`echo ${PROXY_URL} | cut -d/ -f3`
-            # ip=`curl -sL https://lefu.men/hostip.php?d=${host}`
             ip=`ping ${host} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
             res=`echo -n ${ip} | grep ${host}`
             if [[ "${res}" = "" ]]; then
@@ -771,9 +769,9 @@ install() {
 
 bbrReboot() {
     if [[ "${INSTALL_BBR}" == "true" ]]; then
-        echo  
+        echo "" 
         echo " 为使BBR模块生效，系统将在30秒后重启"
-        echo  
+        echo "" 
         echo -e " 您可以按 ctrl + c 取消重启，稍后输入 ${RED}reboot${PLAIN} 重启系统"
         sleep 30
         reboot
@@ -914,16 +912,16 @@ showInfo() {
     echo ""
     echo -e " ${BLUE}trojan-go配置文件: ${PLAIN} ${RED}${CONFIG_FILE}${PLAIN}"
     echo -e " ${BLUE}trojan-go配置信息：${PLAIN}"
-    echo -e "   IP：${RED}$IP${PLAIN}"
-    echo -e "   伪装域名/主机名(host)/SNI/peer名称：${RED}$domain${PLAIN}"
-    echo -e "   端口(port)：${RED}$port${PLAIN}"
-    echo -e "   密码(password)：${RED}$password${PLAIN}"
+    echo -e "   ${BLUE}IP: ${PLAIN} ${RED}$IP${PLAIN}"
+    echo -e "   ${BLUE}伪装域名/主机名(host)/SNI/peer名称: ${PLAIN} ${RED}$domain${PLAIN}"
+    echo -e "   ${BLUE}端口(port): ${PLAIN}${RED}$port${PLAIN}"
+    echo -e "   ${BLUE}密码(password): ${PLAIN}${RED}$password${PLAIN}"
     if [[ $ws = "true" ]]; then
-        echo -e "   websocket：${RED}true${PLAIN}"
+        echo -e "   ${BLUE}websocket: ${PLAIN} ${RED}true${PLAIN}"
         wspath=`grep path $CONFIG_FILE | cut -d: -f2 | tr -d \",' '`
-        echo -e "   ws路径(ws path)：${RED}${wspath}${PLAIN}"
+        echo -e "   ${BLUE}ws路径(ws path): ${PLAIN} ${RED}${wspath}${PLAIN}"
     fi
-    echo -e "   URL：trojan-go://$password@$domain:$port?peer=$domain&sni=$domain#$domain"
+    echo -e "   ${BLUE}URL: ${PLAIN} ${RED}trojan-go://$password@$domain:$port?peer=$domain&sni=$domain#$domain${PLAIN}"
     echo ""
 }
 
@@ -960,10 +958,10 @@ menu() {
     echo -e "  ${GREEN}10.${PLAIN} 查看trojan-go日志"
     echo " -------------"
     echo -e "  ${GREEN}0.${PLAIN} 退出"
-    echo 
+    echo ""
     echo -n " 当前状态："
     statusText
-    echo 
+    echo ""
 
     read -p " 请选择操作[0-10]：" answer
     case $answer in
