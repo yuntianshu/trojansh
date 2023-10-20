@@ -290,7 +290,7 @@ getData() {
     echo "   4) 自定义反代站点(需以http或者https开头)"
     read -p "  请选择伪装网站类型[默认:2]" answer
     if [[ -z "$answer" ]]; then
-        $answer=2  
+        answer=2
     fi
 
     case $answer in
@@ -907,11 +907,11 @@ showInfo() {
     line11=`expr $line1 + 1`
     ws=`sed -n "${line11}p" $CONFIG_FILE | cut -d: -f2 | tr -d \",' '`
     echo ""
-    echo -n " trojan-go运行状态："
+    echo -n " trojan-go运行状态: "
     statusText
     echo ""
-    echo -e " ${BLUE}trojan-go配置文件: ${PLAIN} ${RED}${CONFIG_FILE}${PLAIN}"
-    echo -e " ${BLUE}trojan-go配置信息：${PLAIN}"
+    echo -e " trojan-go配置文件: ${RED}${CONFIG_FILE}${PLAIN}"
+    echo -e " trojan-go配置信息: "
     echo -e "   ${BLUE}IP: ${PLAIN} ${RED}$IP${PLAIN}"
     echo -e "   ${BLUE}伪装域名/主机名(host)/SNI/peer名称: ${PLAIN} ${RED}$domain${PLAIN}"
     echo -e "   ${BLUE}端口(port): ${PLAIN}${RED}$port${PLAIN}"
@@ -921,7 +921,7 @@ showInfo() {
         wspath=`grep path $CONFIG_FILE | cut -d: -f2 | tr -d \",' '`
         echo -e "   ${BLUE}ws路径(ws path): ${PLAIN} ${RED}${wspath}${PLAIN}"
     fi
-    echo -e "   ${BLUE}URL: ${PLAIN} ${RED}trojan-go://$password@$domain:$port?peer=$domain&sni=$domain#$domain${PLAIN}"
+    echo -e " trojan-go URL: ${RED}trojan-go://$password@$domain:$port?peer=$domain&sni=$domain#$domain${PLAIN}"
     echo ""
 }
 
