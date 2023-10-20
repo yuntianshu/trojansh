@@ -288,11 +288,8 @@ getData() {
     echo "   2) 小说站(随机选择)"
     echo "   3) 影视节目站(https://killsometime.com)"
     echo "   4) 自定义反代站点(需以http或者https开头)"
-    read -p "  请选择伪装网站类型[默认:2]" answer
-    if [[ -z "$answer" ]]; then
-        answer=2
-    fi
-
+    read -p "  请选择伪装网站类型[默认:2]" answer    
+    [[ -z "${answer}" ]] && answer=2
     case $answer in
     1)
         PROXY_URL=""
