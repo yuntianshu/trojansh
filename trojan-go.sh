@@ -923,6 +923,7 @@ showInfo() {
         wspath=`grep path $CONFIG_FILE | cut -d: -f2 | tr -d \",' '`
         echo -e "   ws路径(ws path)：${RED}${wspath}${PLAIN}"
     fi
+    echo -e "   URL：trojan-go://$password@$domain:$port?peer=$domain&sni=$domain#$domain"
     echo ""
 }
 
@@ -942,21 +943,20 @@ menu() {
     echo -e "                    ${GREEN}trojan-go一键安装脚本${PLAIN}"
     echo -e "                    ${GREEN}系统：centos7+/debian9+/ubuntu16.04+${PLAIN}"
     echo -e "                    ${RED}不要占用80和443端口${PLAIN}"
-    echo -e "                    ${GREEN}作者${PLAIN}: 网络跳越(hijk)${PLAIN}"
     echo "#############################################################"
     echo ""
 
     echo -e "  ${GREEN}1.${PLAIN}  安装trojan-go"
     echo -e "  ${GREEN}2.${PLAIN}  安装trojan-go+WS"
     echo -e "  ${GREEN}3.${PLAIN}  更新trojan-go"
-    echo -e "  ${GREEN}4.  ${RED}卸载trojan-go${PLAIN}"
+    echo -e "  ${GREEN}4.${PLAIN}  ${RED}卸载trojan-go${PLAIN}"
     echo " -------------"
     echo -e "  ${GREEN}5.${PLAIN}  启动trojan-go"
     echo -e "  ${GREEN}6.${PLAIN}  重启trojan-go"
     echo -e "  ${GREEN}7.${PLAIN}  停止trojan-go"
     echo " -------------"
     echo -e "  ${GREEN}8.${PLAIN}  查看trojan-go配置"
-    echo -e "  ${GREEN}9.  ${RED}修改trojan-go配置${PLAIN}"
+    echo -e "  ${GREEN}9.${PLAIN}  ${RED}修改trojan-go配置${PLAIN}"
     echo -e "  ${GREEN}10.${PLAIN} 查看trojan-go日志"
     echo " -------------"
     echo -e "  ${GREEN}0.${PLAIN} 退出"
