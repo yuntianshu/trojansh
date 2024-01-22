@@ -49,14 +49,12 @@ fi
 # 以下网站是随机从Google上找到的无广告小说网站，不喜欢请改成其他网址，以http或https开头
 # 搭建好后无法打开伪装域名，可能是反代小说网站挂了，请在Github发issue，以便替换新的网站
 SITES=(
-http://www.zhuizishu.com/
 http://www.biqu6.com/
-http://www.39shubao.com/
-https://www.23xsw.cc/
+https://www.ishubao.org/
+https://www.23xsww.net/
 https://www.royalroad.com/
 https://www.wuxiaworld.com/
 https://www.gutenberg.org/
-https://en.wikibooks.org/
 https://boxnovel.com/
 https://novelfull.com/
 )
