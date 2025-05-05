@@ -52,8 +52,6 @@ SITES=(
 http://www.biqu6.com/
 https://www.ishubao.org/
 https://www.23xsww.net/
-https://www.royalroad.com/
-https://www.wuxiaworld.com/
 https://www.gutenberg.org/
 https://boxnovel.com/
 https://novelfull.com/
